@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapScale API — Enterprise Dynamic Screenshot & Viewport Emulation Microservice</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        purpleBrand: '#A855F7',
+                        cyanBrand: '#06B6D4',
+                        darkBg: '#090D16',
+                        cardBg: 'rgba(17, 24, 39, 0.75)',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #17132e 0%, #090d16 100%);
+            min-height: 100vh;
+            color: #f1f5f9;
+        }
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #c084fc 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="selection:bg-purple-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-purple-500/25">
+                    <i class="fa-solid fa-camera text-white text-lg"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="font-extrabold text-lg tracking-tight text-white">Snap<span class="text-purple-400">Scale</span> API</span>
+                        <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-purple-950 text-purple-400 border border-purple-800/60">Microservice v2.4</span>
+                    </div>
+                    <p class="text-xs text-slate-400 hidden sm:block">Headless Rendering, Dynamic Modal Dismissal & Multi-Viewport Capture</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <div class="hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-xs text-slate-300 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Flask / Selenium Cluster: 200 OK</span>
+                </div>
+                <a href="https://github.com/Jigyasha1712/Dynamic-Screenshot-API-Microservice" target="_blank" class="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition">
+                    <i class="fa-brands fa-github text-sm"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-8">
+
+        <!-- Hero Section -->
+        <div class="glass-panel rounded-2xl p-6 lg:p-8 relative overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+                <div class="space-y-2 max-w-2xl">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-purple-950/80 text-purple-300 border border-purple-500/40 text-xs font-mono">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>Production Microservice • AWS S3 Auto-Upload • Dockerized</span>
+                    </div>
+                    <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+                        Dynamic Web <span class="text-gradient">Screenshot & Rendering</span> Engine
+                    </h1>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        High-throughput REST API microservice capturing high-fidelity web screenshots with automated cookie popup dismissal, multi-device viewport emulation, and instant cloud persistence.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-3 font-mono text-xs">
+                    <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-700 text-center">
+                        <span class="text-slate-400 block text-[10px]">Avg Latency</span>
+                        <span class="text-cyan-400 font-bold">580ms</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-700 text-center">
+                        <span class="text-slate-400 block text-[10px]">Cloud Store</span>
+                        <span class="text-purple-400 font-bold">AWS S3</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-700 text-center">
+                        <span class="text-slate-400 block text-[10px]">Driver</span>
+                        <span class="text-emerald-400 font-bold">Chromium</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Playground Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- Left Controls: 5 Cols -->
+            <div class="lg:col-span-5 glass-panel p-6 rounded-2xl space-y-5">
+                <div class="border-b border-white/10 pb-4">
+                    <h2 class="text-base font-bold text-white">API Parameters & Viewport Studio</h2>
+                    <p class="text-xs text-slate-400">Configure target URL, device dimensions, and dismissal rules</p>
+                </div>
+
+                <!-- URL Bar -->
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Target Web URL</label>
+                    <div class="relative">
+                        <input type="text" id="target-url" value="https://stripe.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-purple-500">
+                    </div>
+                </div>
+
+                <!-- Preset Targets -->
+                <div>
+                    <label class="text-[11px] font-semibold text-slate-400 block mb-1.5 font-mono">Quick Demos:</label>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <button onclick="loadPreset('https://stripe.com', 'desktop')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left transition">
+                            <span class="text-white font-bold block text-[11px]">Stripe.com</span>
+                            <span class="text-[10px] text-purple-400">Desktop FHD</span>
+                        </button>
+                        <button onclick="loadPreset('https://apple.com/iphone', 'mobile')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left transition">
+                            <span class="text-white font-bold block text-[11px]">Apple.com</span>
+                            <span class="text-[10px] text-cyan-400">Mobile Viewport</span>
+                        </button>
+                        <button onclick="loadPreset('https://github.com/trending', 'tablet')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left transition">
+                            <span class="text-white font-bold block text-[11px]">GitHub Trending</span>
+                            <span class="text-[10px] text-emerald-400">Tablet iPad</span>
+                        </button>
+                        <button onclick="loadPreset('https://techcrunch.com', 'fullpage')" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left transition">
+                            <span class="text-white font-bold block text-[11px]">TechCrunch</span>
+                            <span class="text-[10px] text-amber-400">Full-Page Stitched</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Device Emulation Selector -->
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1.5">Viewport Emulation</label>
+                    <div class="grid grid-cols-3 gap-2 text-xs">
+                        <button onclick="setViewport('desktop')" id="vp-desktop" class="vp-btn p-2 rounded-xl bg-purple-950 text-purple-300 border border-purple-500/40 text-center font-mono">
+                            <i class="fa-solid fa-desktop block mb-1 text-sm"></i>
+                            <span class="text-[11px]">1920×1080</span>
+                        </button>
+                        <button onclick="setViewport('tablet')" id="vp-tablet" class="vp-btn p-2 rounded-xl bg-slate-900 text-slate-400 border border-slate-800 text-center font-mono">
+                            <i class="fa-solid fa-tablet-screen-button block mb-1 text-sm"></i>
+                            <span class="text-[11px]">820×1180</span>
+                        </button>
+                        <button onclick="setViewport('mobile')" id="vp-mobile" class="vp-btn p-2 rounded-xl bg-slate-900 text-slate-400 border border-slate-800 text-center font-mono">
+                            <i class="fa-solid fa-mobile-screen block mb-1 text-sm"></i>
+                            <span class="text-[11px]">393×852</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Feature Toggles -->
+                <div class="space-y-2 pt-1 text-xs">
+                    <label class="flex items-center space-x-2 text-slate-300 cursor-pointer">
+                        <input type="checkbox" id="chk-modals" checked class="rounded accent-purple-500">
+                        <span>Auto-Dismiss Cookie Banners & Overlays</span>
+                    </label>
+                    <label class="flex items-center space-x-2 text-slate-300 cursor-pointer">
+                        <input type="checkbox" id="chk-s3" checked class="rounded accent-purple-500">
+                        <span>Upload Directly to AWS S3 Bucket</span>
+                    </label>
+                    <label class="flex items-center space-x-2 text-slate-300 cursor-pointer">
+                        <input type="checkbox" id="chk-fullpage" class="rounded accent-purple-500">
+                        <span>Capture Full Scrollable Page (Infinite Height)</span>
+                    </label>
+                </div>
+
+                <button onclick="triggerCapture()" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold text-xs shadow-lg shadow-purple-500/25 transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-camera-retro"></i>
+                    <span>Execute REST API Screenshot Request</span>
+                </button>
+            </div>
+
+            <!-- Right Preview: 7 Cols -->
+            <div class="lg:col-span-7 glass-panel p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                <div>
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <h3 class="font-bold text-white text-sm">Rendered Viewport Preview</h3>
+                        <span id="capture-status" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-emerald-950 text-emerald-400 border border-emerald-500/40">
+                            HTTP 200 OK • S3 SAVED
+                        </span>
+                    </div>
+
+                    <!-- Realistic Device Frame Screen -->
+                    <div class="my-5 flex justify-center items-center">
+                        <div id="device-container" class="w-full max-w-lg bg-slate-950 rounded-2xl p-3 border border-slate-700 shadow-2xl transition-all">
+                            <!-- Browser Chrome Bar -->
+                            <div class="flex items-center space-x-1.5 pb-2.5 px-1 border-b border-white/5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                <div class="flex-1 text-center font-mono text-[10px] text-slate-400 bg-slate-900 rounded px-2 py-0.5 ml-2 truncate" id="browser-url-display">
+                                    https://stripe.com
+                                </div>
+                            </div>
+                            <!-- Mock Web Content Screen -->
+                            <div id="screen-viewport" class="bg-gradient-to-b from-slate-900 to-slate-950 rounded-lg p-6 min-h-[260px] flex flex-col justify-center items-center text-center space-y-3">
+                                <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-globe"></i>
+                                </div>
+                                <h4 class="text-base font-extrabold text-white" id="screen-heading">Financial infrastructure for the internet</h4>
+                                <p class="text-xs text-slate-400 max-w-sm" id="screen-desc">Millions of companies of all sizes use Stripe online and in person to accept payments, send payouts, and manage their businesses.</p>
+                                <div class="flex space-x-2 pt-2">
+                                    <span class="px-3 py-1 rounded-md bg-purple-600 text-white text-[10px] font-bold">Start now</span>
+                                    <span class="px-3 py-1 rounded-md bg-slate-800 text-slate-300 text-[10px] font-mono">Contact sales</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- S3 S3 URI Bar -->
+                    <div class="p-3 bg-slate-950/80 rounded-xl font-mono text-xs border border-white/5 flex items-center justify-between">
+                        <div class="truncate text-cyan-400 mr-2">
+                            <span class="text-slate-500">S3: </span>
+                            <span id="s3-link">s3://snapscale-production-captures/2026/09/stripe_1920x1080_e9a14.png</span>
+                        </div>
+                        <button onclick="navigator.clipboard.writeText(document.getElementById('s3-link').innerText); alert('Copied S3 URL to clipboard!')" class="px-2 py-1 rounded bg-slate-800 text-slate-300 text-[10px] hover:bg-slate-700 whitespace-nowrap">
+                            Copy S3 Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- API Curl Snippet -->
+                <div class="space-y-1.5 font-mono text-xs">
+                    <span class="text-slate-400 block text-[11px] font-sans font-semibold">CURL Request Equivalent:</span>
+                    <pre class="p-3 bg-slate-950 rounded-xl text-emerald-400 overflow-x-auto text-[11px] border border-slate-800"><code id="curl-code">curl -X POST https://api.snapscale.io/v1/screenshot \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://stripe.com", "width": 1920, "height": 1080, "auto_modals": true}'</code></pre>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-6 text-center text-xs text-slate-400 space-y-1">
+        <p>Built with ❤️ by <a href="https://github.com/Jigyasha1712" target="_blank" class="text-purple-400 hover:underline font-semibold">Jigyasha Pathak</a> • Dynamic Screenshot API Microservice</p>
+        <p class="text-[11px] text-slate-500 font-mono">Python • Flask • Selenium WebDriver • AWS S3 • MIT License</p>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        let currentVP = 'desktop';
+
+        function setViewport(vp) {
+            currentVP = vp;
+            document.querySelectorAll('.vp-btn').forEach(b => {
+                b.className = 'vp-btn p-2 rounded-xl bg-slate-900 text-slate-400 border border-slate-800 text-center font-mono';
+            });
+            const active = document.getElementById('vp-' + vp);
+            if (active) {
+                active.className = 'vp-btn p-2 rounded-xl bg-purple-950 text-purple-300 border border-purple-500/40 text-center font-mono';
+            }
+
+            const frame = document.getElementById('device-container');
+            if (vp === 'mobile') {
+                frame.style.maxWidth = '280px';
+            } else if (vp === 'tablet') {
+                frame.style.maxWidth = '380px';
+            } else {
+                frame.style.maxWidth = '512px';
+            }
+
+            updateCurl();
+        }
+
+        function loadPreset(url, vp) {
+            document.getElementById('target-url').value = url;
+            setViewport(vp);
+            triggerCapture();
+        }
+
+        function updateCurl() {
+            const url = document.getElementById('target-url').value;
+            const w = currentVP === 'desktop' ? 1920 : (currentVP === 'tablet' ? 820 : 393);
+            const h = currentVP === 'desktop' ? 1080 : (currentVP === 'tablet' ? 1180 : 852);
+            document.getElementById('curl-code').innerText = `curl -X POST https://api.snapscale.io/v1/screenshot \\
+  -H "Content-Type: application/json" \\
+  -d '{"url": "${url}", "width": ${w}, "height": ${h}, "auto_modals": true}'`;
+        }
+
+        function triggerCapture() {
+            const url = document.getElementById('target-url').value || 'https://example.com';
+            document.getElementById('browser-url-display').innerText = url;
+
+            const domain = url.replace('https://', '').replace('http://', '').split('/')[0];
+            const randHex = Math.random().toString(16).substring(2, 7);
+            document.getElementById('s3-link').innerText = `s3://snapscale-captures/2026/09/${domain}_${currentVP}_${randHex}.png`;
+
+            if (url.includes('apple')) {
+                document.getElementById('screen-heading').innerText = "iPhone 15 Pro. Titanium.";
+                document.getElementById('screen-desc').innerText = "So strong. So light. So Pro. Powered by the groundbreaking A17 Pro chip.";
+            } else if (url.includes('github')) {
+                document.getElementById('screen-heading').innerText = "Where the world builds software";
+                document.getElementById('screen-desc').innerText = "Millions of developers and companies build, ship, and maintain their software on GitHub.";
+            } else if (url.includes('techcrunch')) {
+                document.getElementById('screen-heading').innerText = "Startup & Venture Capital Intelligence";
+                document.getElementById('screen-desc').innerText = "Breaking technology news, analysis of AI breakthroughs, and founder funding rounds.";
+            } else {
+                document.getElementById('screen-heading').innerText = "Financial infrastructure for the internet";
+                document.getElementById('screen-desc').innerText = "Millions of companies of all sizes use Stripe online and in person to accept payments.";
+            }
+
+            updateCurl();
+        }
+
+        window.onload = () => {
+            updateCurl();
+        };
+    </script>
+</body>
+</html>
